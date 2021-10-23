@@ -26,8 +26,17 @@ const deadline = document.querySelector('.deadline')
 const giveaway = document.querySelector('.giveaway')
 const items = document.querySelectorAll('.deadline-format h4')
 
-let futureDate = new Date(2021, 11, 31, 23, 59, 0)
+// To make the program works irrespective of the expiration of the deadline
+// I will have to add extra 10days
 
+let tempDate = new Date()
+let tempYear = tempDate.getFullYear()
+let tempMonth = tempDate.getMonth()
+let tempDay = tempDate.getDate()
+
+//let futureDate = new Date(2021, 11, 31, 23, 59, 0)
+
+const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 23, 59, 0)
 const year = futureDate.getFullYear()
 const hours = futureDate.getHours()
 const minutes = futureDate.getMinutes()
@@ -39,7 +48,7 @@ const date = futureDate.getDate()
 let weekday = futureDate.getDay()
 weekday = weekdays[weekday]
 
-giveaway.textContent = `The giveaway ends ${weekday}, ${date}st ${month} ${year} @ ${hours}:${minutes}pm`
+giveaway.textContent = `The giveaway ends ${weekday}, ${date}nd ${month} ${year} @ ${hours}:${minutes}pm`
 
 // I want to get my time in milliseconds(ms)
 const futureTime = futureDate.getTime()
